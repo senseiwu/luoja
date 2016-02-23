@@ -1,0 +1,18 @@
+<div class="container" ng-controller="SigninUserCtrl as suc">
+<form class="form-signin" ng-submit="suc.loginUser()">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">@Messages("signin.email")</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus ng-model="suc.user.name">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="suc.user.password">
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <div class="mp-padding">
+      I don't have account. <a ng-href="/#/dashboard" class="small_font"> Register me.</a>
+    </div>
+</form>
+</div>

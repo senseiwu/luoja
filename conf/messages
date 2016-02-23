@@ -1,0 +1,15 @@
+application.name = MeetPoint
+events.details = Event: {0}
+events.form = Event details
+events.new = (new)
+events.new.command = + NEW EVENT
+events.new.submit = Add
+events.new.success = Successfully added event {0}
+
+signin.head = Please sign in
+signin.email = Email address
+signin.password = Password
+signin.rememberme = Remember me
+signin.button = Sign in
+
+validation.errors = Please correct the errors in the form

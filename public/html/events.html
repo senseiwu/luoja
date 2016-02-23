@@ -1,0 +1,33 @@
+<div ng-controller="EventCtrl as ec">
+<div class="mp-padding">
+    <!-- <input id="sin" type="text" class="form-control" placeholder="Search events"> -->
+    <a ng-href="/#/user/create" class="btn btn-primary pull-right" id="btn_user_create">Add User</a>
+</div>
+
+<uib-tabset>
+    <uib-tab ng-repeat="tab in ec.events | orderBy:'index'" heading="{{tab.name}}">
+      <table id="event_list" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>When</th>
+            <th>Where</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="event in tab.content">
+            <td>{{ event.name }}</td>
+            <td>{{ event.when }}</td>
+            <td>{{ event.where }}</td>
+          </tr>
+          <tr ng-hide="tab.content.length">
+            <td colspan="3">
+              <p class="text-center">No Events Found</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </uib-tab>
+    <uib-tab heading="Search result"></uib-tab>
+  </uib-tabset>
+</div>
