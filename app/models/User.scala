@@ -29,11 +29,13 @@ object JsonFormats {
 @Singleton
 class UserDAO @Inject() (dbConnection: DbConnection, eventDAO: EventDAO) {
 
-  val collection = dbConnection.db.collection(Schema.UserCollection)
+  // TODO: db connect
+  //val collection = dbConnection.db.collection(Schema.UserCollection)
 
   def login(name:String, password:String):User = {
-    val cr = collection.findOne(Schema.Name $eq name)
-    if (cr.isDefined) mongoObjToUser(cr.get)
+    // TODO: db connect
+    //    val cr = collection.findOne(Schema.Name $eq name)
+//    if (cr.isDefined) mongoObjToUser(cr.get)
     User(null,null,null,null)
   }
 

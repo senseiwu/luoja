@@ -16,8 +16,8 @@ case class EventInfo(profileId:String, name:String, info:String, when:String, pe
 
 @Singleton
 class EventDAO @Inject() (dbConnection: DbConnection) {
-
-  val collection = dbConnection.db.collection(Schema.EventCollection)
+  // TODO: db connect
+  //val collection = dbConnection.db.collection(Schema.EventCollection)
 
   var events = Set(
     Event(1, "Devoxx", "bla bla bal", LocalDate.parse("2015-7-19"), "Geneva"),
@@ -40,7 +40,7 @@ class EventDAO @Inject() (dbConnection: DbConnection) {
 
   def finAll = events.toList.sortBy(_.id)
 
-  def getAll = collection.find
+  def getAll = List()// TODO: db connect collection.find
 
   def findAllToday = events.toList.filter(ev => ev.when.isEqual(LocalDate.now))
 

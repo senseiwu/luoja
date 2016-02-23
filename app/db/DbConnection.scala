@@ -13,15 +13,18 @@ import scala.concurrent.Future
  */
 @Singleton
 class DbConnection @Inject() (lifecycle:ApplicationLifecycle) {
-  val db = dbClient
+  // TODO: db connect
+  //val db = dbClient
 
+  // TODO: db connect
   lifecycle.addStopHook {
-    () => Future.successful(db.close)
+    () => Future.successful(/*db.close*/)
   }
 
   def dbClient = {
     Logger.info("DB initialisation")
-    Mongo(MongoClient(), "dbtestmp")
+    // TODO: db connect
+    //Mongo(MongoClient(), "dbtestmp")
   }
 
 }
