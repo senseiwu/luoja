@@ -84,7 +84,7 @@ class Users @Inject()(val messagesApi: MessagesApi, dbConn:DbConnection) extends
     "Tomek", "Kozlowski", "q@w", "Scala developer", "London",
     List("Scala", "Java", "Play", "Akka"),
     List("startup", "UX", "design"),
-    List(e1), List(e3), List(e4)
+    List(e1), List(e1,e3), List(e4)
   )
 
 }

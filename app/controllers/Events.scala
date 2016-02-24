@@ -3,12 +3,13 @@ package controllers
 import javax.inject.Inject
 
 import com.mongodb.casbah.MongoClient
+import dao.EventDAO
 import db.{DbConnection, Mongo}
 import org.joda.time.LocalDate
 import play.api.Play._
 import play.api.http.Writeable
 import play.api.mvc.{Flash, Action, Controller}
-import models.{EventDAO, Event}
+import models.Event
 import play.api.i18n.{Messages, MessagesApi, I18nSupport}
 import play.api.libs.json._
 import play.api.libs.functional.syntax._

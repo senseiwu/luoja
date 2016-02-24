@@ -33,7 +33,7 @@ db.event.insert({
 	description:"We are also planning on hosting the Global CodeRetreat in our EPAM HackFest Shenzhen on 14 November, 2015. If you would like to take part in this  focus practice, enjoy  zen code exercises to improve your code quality, please apply at : https://epa.ms/CodeRetreatSZ2015"
 });
 
-ev = db,event.findOne({slug:"epamhackfest2015"})
+ev = db.event.findOne({slug:"epamhackfest2015"})
 
 db.user.update(
   {user_id:"1"},
