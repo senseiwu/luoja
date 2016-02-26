@@ -17,17 +17,7 @@ GET     /events                     controllers.Events.list
 
 POST    /save                       controllers.Events.save
 
-GET     /allJson                    controllers.Events.allJson
-
-GET     /upcomingJson               controllers.Events.upcomingJson
-
-GET     /todayJson                  controllers.Events.todayJson
-
-GET     /pastJson                   controllers.Events.pastJson
-
 GET     /newEvent                   controllers.Events.newEvent
-
-GET     /all                        controllers.Events.allJson
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

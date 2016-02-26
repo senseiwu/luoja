@@ -1,4 +1,4 @@
-name := """meetpointp-play"""
+name := """meetpoint-play"""
 
 version := "1.0-SNAPSHOT"
 

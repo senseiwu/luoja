@@ -4,31 +4,22 @@ import javax.inject.{Inject, Singleton}
 
 import com.mongodb.casbah.Imports._
 import db.{DbConnection, Schema}
-import models.User
+import models.{UserProfile, EventInfo, User}
+
+import scala.concurrent.{Future}
+
+import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by tomek on 2/24/16.
  */
 @Singleton
-class UserDAO @Inject() (dbConnection: DbConnection, eventDAO: EventDAO) {
+class UserDAO @Inject() (dbConnection: DbConnection) {
 
-  // TODO: db connect
-  //val collection = dbConnection.db.collection(Schema.UserCollection)
-
-  def login(name:String, password:String):User = {
-    // TODO: db connect
-    //    val cr = collection.findOne(Schema.Name $eq name)
-//    if (cr.isDefined) mongoObjToUser(cr.get)
-    User(null,null,null,null)
-  }
-
-  def mongoObjToUser(mongoDBObject: MongoDBObject):User = {
-    User(
-      mongoDBObject.get("_id").asInstanceOf,
-      mongoDBObject.get("name").asInstanceOf,
-      mongoDBObject.get(Schema.SuggestedUserEvents).toList.asInstanceOf,
-      mongoDBObject.get("tags").toList.asInstanceOf
-    )
+  def login(name:String, password:String):Future[User] = Future {
+    User("id", "Tomasz", "Kozlowski", "Scala dev", "London",
+      List("Scala", "Play", "Java"), List("Startups", "UX"),
+      List(), List(), List())
   }
 
   def signin(name:String, password:String) = ???
@@ -36,4 +27,38 @@ class UserDAO @Inject() (dbConnection: DbConnection, eventDAO: EventDAO) {
   def updateProfile() = ???
 
   def getEvents(uid:ObjectId) = ???
+}
+
+
+object DB {
+  val e1 = EventInfo(
+    "1234",
+    "Scala reactive programming",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
+    "Nov 30th, 2016", 12, 19)
+
+  val e2 = EventInfo(
+    "1234",
+    "SZJUG - Java User Group Shenzhen",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
+    "May 14th, 2016", 33, 112)
+
+  val e3 = EventInfo(
+    "1234",
+    "Microservices in action",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
+    "Nov 12th, 2016", 33, 2)
+
+  val e4 = EventInfo(
+    "1234",
+    "UX design",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
+    "Nov 12th, 2016", 33, 2)
+
+  val up = UserProfile(
+    "Tomek", "Kozlowski", "q@w", "Scala developer", "London",
+    List("Scala", "Java", "Play", "Akka"),
+    List("startup", "UX", "design"),
+    List(e1), List(e1,e3), List(e4)
+  )
 }

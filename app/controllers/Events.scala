@@ -34,34 +34,6 @@ class Events @Inject()(val messagesApi: MessagesApi, eventDAO: EventDAO) extends
     Ok("NA")
   }
 
-  implicit object EventWrites extends Writes[Event] {
-    override def writes(e: Event): JsValue = Json.obj(
-      "id" -> Json.toJson(e.id),
-      "name" -> Json.toJson(e.name),
-      "description" -> Json.toJson(e.description),
-      "when" -> Json.toJson(e.when.toString),
-      "where" -> Json.toJson(e.where)
-    )
-  }
-
-//  implicit object UserWrites extends Writes[User]
-
-  def todayJson = Action {
-    Ok(Json.toJson(eventDAO.findAllToday))
-  }
-
-  def pastJson = Action {
-    Ok(Json.toJson(eventDAO.findAllPast))
-  }
-
-  def upcomingJson = Action {
-    Ok(Json.toJson(eventDAO.findAllUpcoming))
-  }
-
-  def allJson = Action {
-    Ok(eventDAO.getAll.mkString)
-  }
-
   def newEvent = Action {
     Ok("Not implemented yet")
   }
