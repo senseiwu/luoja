@@ -4,7 +4,7 @@ import javax.inject.{Inject, Singleton}
 
 import com.mongodb.casbah.Imports._
 import db.{DbConnection, Schema}
-import models.{UserProfile, EventInfo, User}
+import models.{UserProfile, EventInfo, UserPP}
 
 import scala.concurrent.{Future}
 
@@ -16,10 +16,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 @Singleton
 class UserDAO @Inject() (dbConnection: DbConnection) {
 
-  def login(name:String, password:String):Future[User] = Future {
-    User("id", "Tomasz", "Kozlowski", "Scala dev", "London",
-      List("Scala", "Play", "Java"), List("Startups", "UX"),
-      List(), List(), List())
+  def login(name:String, password:String):Future[UserPP] = Future {
+    UserPP("id", name, "Tomasz", "Kozlowski", "Scala dev", "London",
+      List("Scala", "Play", "Java"), List("Startups", "UX"))
   }
 
   def signin(name:String, password:String) = ???
@@ -56,9 +55,9 @@ object DB {
     "Nov 12th, 2016", 33, 2)
 
   val up = UserProfile(
-    "Tomek", "Kozlowski", "q@w", "Scala developer", "London",
+    UserPP("1234", "q@w", "Tomek", "Kozlowski", "Scala developer", "London",
     List("Scala", "Java", "Play", "Akka"),
-    List("startup", "UX", "design"),
+    List("startup", "UX", "design")),
     List(e1), List(e1,e3), List(e4)
   )
 }

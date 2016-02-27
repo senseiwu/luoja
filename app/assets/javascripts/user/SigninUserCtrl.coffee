@@ -11,7 +11,9 @@ class SigninUserCtrl
     loginUser: () ->
       @UserService.signin(@user).then(
         (data) =>
+          @$log.debug "LOGIN " + data + ", " + data.data.status
           if data.data.status == 0
+            @$log.debug "Logged IN OK!"
             @userprofile = data.data.user
             @$cookieStore.put('userdata', data.data.user)
             @$location.path("/dashboard")

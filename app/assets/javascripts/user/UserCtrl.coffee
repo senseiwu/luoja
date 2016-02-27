@@ -16,9 +16,10 @@ class UserCtrl
             @userprofile = data.data.user
             @$cookieStore.put('userdata', data.data.user)
             @$location.path("/dashboard")
-          else
-            @$log.debug "Login failed " + data.data.status
-            @$location.path("/")
+          # else
+          #   @$log.debug "Dashboard failed " + data.data.status
+          #   @$cookieStore.remove('userdata')
+          #   @$location.path("/")
       )
 
 controllersModule.controller('UserCtrl', ['$cookieStore', '$log', '$location', 'UserService', UserCtrl])
