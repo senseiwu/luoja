@@ -14,6 +14,12 @@ class UserService
       .success((data,status,headers) => deffer.resolve(data))
       .error((data,status,headers) => deffer.reject(data))
 
+  suggestions: (username) ->
+    deffer = @$q.defer()
+    @$http.get('/suggestions/' + username)
+      .success((data,status,headers) => deffer.resolve(data))
+      .error((data,status,headers) => deffer.reject(data))
+
   signin: (user) ->
     deffer = @$q.defer()
     @$http.post('/signin', user)

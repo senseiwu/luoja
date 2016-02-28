@@ -12,7 +12,6 @@ class UserCtrl
       @UserService.details(@userprofile.email).then(
         (data) =>
           @$log.debug "dashboard: " + data.data.suggestedEventsInfo
-          @suggestedEventsInfo = data.data.suggestedEventsInfo
           @upcomingEventsInfo = data.data.upcomingEventsInfo
           @pastEventsInfo = data.data.pastEventsInfo
           # if data.data.status == 0
@@ -23,6 +22,11 @@ class UserCtrl
           #   @$log.debug "Dashboard failed " + data.data.status
           #   @$cookieStore.remove('userdata')
           #   @$location.path("/")
+      )
+      @UserService.suggestions(@userprofile.email).then (
+        (data) =>
+          @$log.debug "Suggestions: " + data.data + ". " + data
+          @suggestedEventsInfo = data.data
       )
 
 controllersModule.controller('UserCtrl', ['$cookieStore', '$log', '$location', 'UserService', UserCtrl])

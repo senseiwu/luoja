@@ -41,6 +41,13 @@ class Users @Inject()(val messagesApi: MessagesApi, userDao:UserDAO, eventDao:Ev
     })
   }
 
+  def suggestions(userName:String) = Action.async {
+    Logger.info("Suggestions | " + userName)
+    userDao.suggestions(userName).map((s:List[EventInfo]) =>
+      Ok(Json.toJson(s))
+    )
+  }
+
   def register = Action {
     Ok("Not implemented yet")
   }

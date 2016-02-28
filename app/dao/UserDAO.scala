@@ -29,9 +29,12 @@ class UserDAO @Inject() (dbConnection: DbConnection) {
     val ids = DB.usrColl(name)._3
     UserDashboard(
       ids._1.map(DB.evColl(_)),
-      ids._2.map(DB.evColl(_)),
-      ids._3.map(DB.evColl(_))
+      ids._2.map(DB.evColl(_))
     )
+  }
+
+  def suggestions(userName:String):Future[List[EventInfo]] = Future {
+    DB.suggColl(userName).map(DB.evColl(_))
   }
 
   def signin(name:String, password:String) = ???
@@ -71,8 +74,9 @@ object DB {
     List("Scala", "Java", "Play", "Akka"),
     List("startup", "UX", "design"))
 
-  val ud = (List("1111", "1114"), List("1111","1112"), List("1114"))
+  val ud = (List("1111","1112"), List("1114"))
 
+  val suggColl = Map("q@w" -> List("1111", "1114"))
   val evColl = Map("1111" -> e1, "1112" -> e2, "1113" -> e3, "1114" -> e4)
   val usrColl = Map("q@w" -> ("ppp", up, ud))
 

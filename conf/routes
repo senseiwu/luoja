@@ -11,6 +11,8 @@ GET     /dashboard                  controllers.Application.index
 
 GET     /usersdata/:login           controllers.Users.dashboard(login:String)
 
+GET     /suggestions/:login           controllers.Users.suggestions(login:String)
+
 GET     /user/:username             controllers.Users.details(username:String)
 
 GET     /events                     controllers.Events.list
