@@ -33,7 +33,7 @@
               <a href="">Groups</a>
             </div>
             <div class="col-sm-6">
-              <h2><strong>{{ cuc.userprofile.upcomingEventsInfo.length }}</strong></h2>
+              <h2><strong>{{ cuc.upcomingEventsInfo.length }}</strong></h2>
               <a href="#">Upcoming events</a>
             </div>
           </div>
@@ -42,7 +42,7 @@
 
       <h4>YOU MAY WANT TO JOIN</h4>
 
-      <div class="panel panel-default" ng-repeat="event in cuc.userprofile.suggestedEventsInfo">
+      <div class="panel panel-default" ng-repeat="event in cuc.suggestedEventsInfo">
         <div class="panel-heading">
           <a href="#"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
         </div>
@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <div class="panel panel-default" ng-hide="cuc.userprofile.suggestedEventsInfo.length">
+      <div class="panel panel-default" ng-hide="cuc.suggestedEventsInfo.length">
         <div class="panel-body" ng-class="{'body-not-active':true}">
           <div class="row">
             <div class="col-sm-12 text-center">
@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <div class="panel panel-default" ng-show="cuc.userprofile.suggestedEventsInfo.length">
+      <div class="panel panel-default" ng-show="cuc.suggestedEventsInfo.length">
         <div class="panel-body">
           <div class="row">
             <div class="col-sm-12 text-center">
@@ -89,7 +89,7 @@
     <div class="col-md-4">
 
       <h4>MY UPCOMING EVENTS</h4>
-      <div class="panel panel-default" ng-repeat="event in cuc.userprofile.upcomingEventsInfo">
+      <div class="panel panel-default" ng-repeat="event in cuc.upcomingEventsInfo">
         <div class="panel-heading">
           <a href="#"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
         </div>
@@ -104,14 +104,14 @@
             </div>
             <div class="col-sm-6">
               <p class="text-right">
-                <a><span class="badge">{{  event.commentsCount }}</span> comments</a>
+                <a><span class="badge">{{ event.commentsCount }}</span> comments</a>
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="panel panel-default" ng-hide="cuc.userprofile.upcomingEventsInfo.length">
+      <div class="panel panel-default" ng-hide="cuc.upcomingEventsInfo.length">
         <div class="panel-body" ng-class="{'body-not-active':true}">
           <div class="row">
             <div class="col-sm-12 text-center">
@@ -121,7 +121,7 @@
         </div>
       </div>
 
-      <div class="panel panel-default" ng-show="cuc.userprofile.upcomingEventsInfo.length">
+      <div class="panel panel-default" ng-show="cuc.upcomingEventsInfo.length">
         <div class="panel-body">
           <div class="row">
             <div class="col-sm-12 text-center">
@@ -136,7 +136,7 @@
     <div class="col-md-4">
 
       <h4>MY PREVIOUS ACTIVITIES</h4>
-      <div class="panel panel-default" ng-repeat="event in cuc.userprofile.pastEventsInfo">
+      <div class="panel panel-default" ng-repeat="event in cuc.pastEventsInfo">
         <div class="panel-heading">
           <a href="#"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
         </div>
@@ -158,7 +158,7 @@
         </div>
       </div>
 
-      <div class="panel panel-default" ng-hide="cuc.userprofile.pastEventsInfo.length">
+      <div class="panel panel-default" ng-hide="cuc.pastEventsInfo.length">
         <div class="panel-body" ng-class="{'body-not-active':true}">
           <div class="row">
             <div class="col-sm-12 text-center">
@@ -168,7 +168,7 @@
         </div>
       </div>
 
-      <div class="panel panel-default" ng-show="cuc.userprofile.pastEventsInfo.length">
+      <div class="panel panel-default" ng-show="cuc.pastEventsInfo.length">
         <div class="panel-body">
           <div class="row">
             <div class="col-sm-12 text-center">

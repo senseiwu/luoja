@@ -9,9 +9,16 @@ import play.api.Logger
 /**
  * Created by tomek on 2/2/16.
  */
-case class Event(id:Long, name:String, description:String, when:LocalDate, where:String)
-case class Topic(id:Long, name:String, tags:String)
+// TODO: extend this class
+case class Event(
+                  _id:Long,
+                  name:String,
+                  description:String,
+                  when:LocalDate,
+                  where:String
+                  )
 
-case class EventInfo(profileId:String, name:String, info:String, when:String, peopleCount:Int, commentsCount:Int)
-
-
+object Event {
+  import play.api.libs.json.Json
+  implicit val eventFormat = Json.format[Event]
+}

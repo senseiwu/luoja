@@ -3,7 +3,7 @@ package dao
 import javax.inject.{Inject, Singleton}
 
 import db.DbConnection
-import models.{UserPP, UserProfile, EventInfo}
+import models.{Event, EventInfo}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
@@ -12,13 +12,8 @@ import scala.concurrent.Future
  */
 @Singleton
 class EventDAO @Inject() (dbConnection: DbConnection) {
-
-  def eventsUserId(user:UserPP):Future[UserProfile] = Future {
-    UserProfile(user,List(DB.e1, DB.e2),List(DB.e1, DB.e2),List(DB.e1, DB.e2))
-  }
-
-  def suggestionsUserId(uid:String):Future[List[EventInfo]] = ???
-
-  def suggestionsTags(tags:List[String]):Future[List[EventInfo]] = ???
-
+  def eventInfoByIdSync(id:String):EventInfo = DB.evColl(id)
+  def eventInfoByIdAsync(id:String):Future[EventInfo] = Future(eventInfoByIdSync(id))
+  def eventByIdSync(id:String):Event = ???
+  def eventByIdAsync(id:String):Future[Event] = Future(eventByIdSync(id))
 }
