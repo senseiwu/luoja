@@ -87,8 +87,17 @@
     </div>
 
     <div class="col-md-4">
+      <!-- Calendar is here -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div id='calendar' class="calendar" ng-model="cuc.eventSources" calendar="myCalendar" ui-calendar="cuc.uiConfig.calendar"></div>
+          </div>
+        </div>
+      </div>
 
       <h4>MY UPCOMING EVENTS</h4>
+
       <div class="panel panel-default" ng-repeat="event in cuc.upcomingEventsInfo">
         <div class="panel-heading">
           <a href="#"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>

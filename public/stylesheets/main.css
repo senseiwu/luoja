@@ -27,3 +27,16 @@ body, html {
 }
 
 .full { height: 100%;}
+
+#calendar {
+		padding: 10px 10px;
+    width: 0 auto;
+    height: auto;
+    overflow: hidden;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 10px;
+}
+
+.fc-sat, .fc-sun {
+    background-color: #EBF4FA;
+}

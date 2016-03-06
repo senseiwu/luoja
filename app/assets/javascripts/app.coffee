@@ -1,6 +1,7 @@
 dependencies = [
     'ngRoute',
     'ngCookies',
+    'ui.calendar',
     'ui.bootstrap',
     'mpApp.filters',
     'mpApp.directives',

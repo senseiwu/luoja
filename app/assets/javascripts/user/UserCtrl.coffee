@@ -1,11 +1,13 @@
 class UserCtrl
 
-    constructor: (@$cookieStore, @$log, @$location,  @UserService) ->
+    constructor: (@$cookieStore, @$log, @$location,  @UserService, @CalendarService) ->
         @$log.debug "UserCtrl created"
         @userprofile = @$cookieStore.get('userdata')
         @suggestedEventsInfo = {}
         @upcomingEventsInfo = {}
         @pastEventsInfo = {}
+        @uiConfig = @CalendarService.uiConfig
+        @eventSources = [@CalendarService.events]
         this.dashboard()
 
     dashboard: () ->
@@ -29,4 +31,4 @@ class UserCtrl
           @suggestedEventsInfo = data.data
       )
 
-controllersModule.controller('UserCtrl', ['$cookieStore', '$log', '$location', 'UserService', UserCtrl])
+controllersModule.controller('UserCtrl', ['$cookieStore', '$log', '$location', 'UserService', 'CalendarService', UserCtrl])
