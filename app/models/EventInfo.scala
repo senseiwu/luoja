@@ -6,6 +6,7 @@ package models
 case class EventInfo(
                       profileId:String,
                       name:String,
+                      slug:String,
                       info:String,
                       when:String,
                       peopleCount:Int,

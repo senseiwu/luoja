@@ -11,9 +11,10 @@ class CalendarService
             center: '',
             right: 'today prev,next'
           },
+          eventClick: this.onEventClick
         }
       };
-      date = new Date();
+      date = new Date('05-Mar-2016');
       d = date.getDate();
       m = date.getMonth();
       y = date.getFullYear();
@@ -25,10 +26,16 @@ class CalendarService
         {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
         {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://bing.com/'}
       ]
+      @events1 = []
       @eventSources = [@events]
 
+  addEvents: (data) ->
+    @events1.push { id:item.profileId, title: item.name, start: new Date(item.when) } for item in data
+
+  onEventClick: (date, jsEvent, view) ->
+    console.log "Event clicked ughh --> " + date.id + " , " + date.title
+
   renderCalender: (calendar) ->
-    @$log.debug "Render: " + calendar
     if(@uiCalendarConfig.calendars[calendar])
       @uiCalendarConfig.calendars[calendar].fullCalendar('render')
 

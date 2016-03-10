@@ -5,6 +5,8 @@ import javax.inject.{Inject, Singleton}
 import com.mongodb.casbah.Imports._
 import db.{DbConnection, Schema}
 import models.{AuthStatus, UserDashboard, EventInfo, User}
+import org.joda.time.format.{DateTimeFormatter, DateTimeFormatterBuilder, DateTimeFormat}
+import org.joda.time.{DateTime, LocalDate}
 
 import scala.concurrent.{Future}
 
@@ -46,29 +48,46 @@ class UserDAO @Inject() (dbConnection: DbConnection) {
 
 object DB {
 
+  val date1 = new DateTime(2016, 3, 10, 12, 0, 0, 0)
+  val date2 = new DateTime(2016, 3, 16, 12, 0, 0, 0)
+  val date3 = new DateTime(2016, 3, 19, 12, 0, 0, 0)
+  val date4 = new DateTime(2016, 3, 2, 12, 0, 0, 0)
+
+  val fmt:DateTimeFormatter = new DateTimeFormatterBuilder()
+            .appendDayOfMonth(2)
+            .appendLiteral('-')
+            .appendMonthOfYearShortText()
+            .appendLiteral('-')
+            .appendTwoDigitYear(1956)  // pivot = 1956
+            .toFormatter()
+
   val e1 = EventInfo(
     "1111",
     "Scala reactive programming",
+    "scalareact",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    "Nov 30th, 2016", 12, 19)
+    date1.toString(fmt), 12, 19)
 
   val e2 = EventInfo(
     "1112",
     "SZJUG - Java User Group Shenzhen",
+    "szjugmar19",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    "May 14th, 2016", 33, 112)
+    date2.toString(fmt), 33, 112)
 
   val e3 = EventInfo(
     "1113",
     "Microservices in action",
+    "microsvcs",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    "Nov 12th, 2016", 33, 2)
+    date3.toString(fmt), 33, 2)
 
   val e4 = EventInfo(
     "1114",
     "UX design",
+    "uxdesign",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    "Nov 12th, 2016", 33, 2)
+    date4.toString(fmt), 33, 2)
 
   val up = User("1234", "q@w", "Tomek", "Kozlowski", "Scala developer", "London",
     List("Scala", "Java", "Play", "Akka"),

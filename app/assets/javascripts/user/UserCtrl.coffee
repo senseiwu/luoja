@@ -7,7 +7,7 @@ class UserCtrl
         @upcomingEventsInfo = {}
         @pastEventsInfo = {}
         @uiConfig = @CalendarService.uiConfig
-        @eventSources = [@CalendarService.events]
+        @eventSources = [@CalendarService.events1]
         this.dashboard()
 
     dashboard: () ->
@@ -16,6 +16,7 @@ class UserCtrl
           @$log.debug "dashboard: " + data.data.suggestedEventsInfo
           @upcomingEventsInfo = data.data.upcomingEventsInfo
           @pastEventsInfo = data.data.pastEventsInfo
+          @CalendarService.addEvents @upcomingEventsInfo
           # if data.data.status == 0
           #   @userprofile = data.data.user
           #   @$cookieStore.put('userdata', data.data.user)
