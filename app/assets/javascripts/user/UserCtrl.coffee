@@ -7,12 +7,23 @@ class UserCtrl
         @upcomingEventsInfo = {}
         @pastEventsInfo = {}
         @uiConfig = @CalendarService.uiConfig
-        @eventSources = [@CalendarService.events1]
+        @events1 = []
+        @eventSources = [@events1]
         this.dashboard()
-        @eventClicked = @CalendarService.eventClicked
+        @eventClicked = {}
+
+    addEvents: (data) ->
+      @events1.push {
+          id:item.profileId,
+          title: item.name,
+          start: new Date(item.when),
+          info: item.info,
+          stick: true,
+          url: '/#/event/'+item.slug
+        } for item in data
 
     test: () ->
-      @$log.debug "TEST " + @CalendarService.eventClicked.title
+      @$log.debug "TEST "
 
     dashboard: () ->
       @UserService.details(@userprofile.email).then(
@@ -20,7 +31,7 @@ class UserCtrl
           @$log.debug "dashboard: " + data.data.suggestedEventsInfo
           @upcomingEventsInfo = data.data.upcomingEventsInfo
           @pastEventsInfo = data.data.pastEventsInfo
-          @CalendarService.addEvents @upcomingEventsInfo
+          this.addEvents @upcomingEventsInfo
           # @$log.debug "ev2: " + JSON.stringify(obj) for obj in @eventSources
           # if data.data.status == 0
           #   @userprofile = data.data.user

@@ -44,7 +44,7 @@
 
       <div class="panel panel-default" ng-repeat="event in cuc.suggestedEventsInfo">
         <div class="panel-heading">
-          <a ng-href="/#/event/{{event.name}}"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
+          <a ng-href="/#/event/{{event.slug}}"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -100,7 +100,7 @@
 
       <div class="panel panel-default" ng-repeat="event in cuc.upcomingEventsInfo">
         <div class="panel-heading">
-          <a href="#"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
+          <a href="/#/event/{{event.slug}}"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -147,7 +147,7 @@
       <h4>MY PREVIOUS ACTIVITIES</h4>
       <div class="panel panel-default" ng-repeat="event in cuc.pastEventsInfo">
         <div class="panel-heading">
-          <a href="#"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
+          <a href="/#/event/{{event.slug}}"><h4 class="panel-title"><strong>{{ event.name }}</strong></h4></a>
         </div>
         <div class="panel-body">
           <div class="row">
@@ -222,6 +222,5 @@
       </div>
     </div>
   </div>
-
 
 </div>
