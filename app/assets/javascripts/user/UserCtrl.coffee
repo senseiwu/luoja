@@ -1,16 +1,61 @@
 class UserCtrl
 
-    constructor: (@$cookieStore, @$log, @$location,  @UserService, @CalendarService) ->
+    constructor: (@$cookieStore, @$log, @$location,  @UserService, @uiCalendarConfig) ->
         @$log.debug "UserCtrl created"
         @userprofile = @$cookieStore.get('userdata')
         @suggestedEventsInfo = {}
         @upcomingEventsInfo = {}
         @pastEventsInfo = {}
-        @uiConfig = @CalendarService.uiConfig
         @events1 = []
         @eventSources = [@events1]
         this.dashboard()
-        @eventClicked = {}
+        @evc = {title:"jjj"}
+        @eventClicked = [@evc]
+
+        @uiConfig = {
+          calendar:{
+            height: 'auto',
+            firstDay: 1,
+            editable: true,
+            header:{
+              left: 'title',
+              center: '',
+              right: 'today prev,next'
+            },
+            eventClick: this.onEventClick
+            eventRender: this.eventRender
+          }
+        };
+
+    test: () ->
+      @$log.debug "TEST " + $('#modalEventSlug').val()
+
+    onEventClick: (date, jsEvent, view) ->
+      console.log "ST: " + @evc
+      @evc = date
+      console.log "Event clicked --> " + date.slug + " , " + date.title + ", " + @evc.title
+      if typeof(date.url) == 'undefined'
+        $('#myModal').modal('toggle')
+        $('#myModalLabel').text(date.title)
+        $('#myModalInfo').text(date.info)
+        $('#modalWhen').text(moment(date.start).format("DD-MM-YYYY"))
+        $('#modalPeopleCount').text(33)
+        $('#modalCommentsCount').text(12)
+        $('#modalEventSlug').text(date.slug)
+      else
+        console.log "open link"
+
+    eventRender: (event, element) ->
+      element.attr(
+        {
+          'tooltip': event.title,
+          'tooltip-append-to-body': true
+          }
+        );
+
+    renderCalender: (calendar) ->
+      if(@uiCalendarConfig.calendars[calendar])
+        @uiCalendarConfig.calendars[calendar].fullCalendar('render')
 
     addEvents: (data) ->
       @events1.push {
@@ -19,11 +64,8 @@ class UserCtrl
           start: new Date(item.when),
           info: item.info,
           stick: true,
-          url: '/#/event/'+item.slug
+          slug: item.slug
         } for item in data
-
-    test: () ->
-      @$log.debug "TEST "
 
     dashboard: () ->
       @UserService.details(@userprofile.email).then(
@@ -33,14 +75,6 @@ class UserCtrl
           @pastEventsInfo = data.data.pastEventsInfo
           this.addEvents @upcomingEventsInfo
           # @$log.debug "ev2: " + JSON.stringify(obj) for obj in @eventSources
-          # if data.data.status == 0
-          #   @userprofile = data.data.user
-          #   @$cookieStore.put('userdata', data.data.user)
-          #   @$location.path("/dashboard")
-          # else
-          #   @$log.debug "Dashboard failed " + data.data.status
-          #   @$cookieStore.remove('userdata')
-          #   @$location.path("/")
       )
       @UserService.suggestions(@userprofile.email).then (
         (data) =>
@@ -48,4 +82,4 @@ class UserCtrl
           @suggestedEventsInfo = data.data
       )
 
-controllersModule.controller('UserCtrl', ['$cookieStore', '$log', '$location', 'UserService', 'CalendarService', UserCtrl])
+controllersModule.controller('UserCtrl', ['$cookieStore', '$log', '$location', 'UserService', 'uiCalendarConfig', UserCtrl])

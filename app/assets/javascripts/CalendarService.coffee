@@ -1,6 +1,7 @@
 class CalendarService
   constructor: (@$compile, @$timeout, @uiCalendarConfig, @$log) ->
       @$log.debug "CalendarService created"
+      @eventClicked = {}
       @uiConfig = {
         calendar:{
           height: 'auto',
