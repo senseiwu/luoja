@@ -21,7 +21,7 @@ class UserCtrl
           @upcomingEventsInfo = data.data.upcomingEventsInfo
           @pastEventsInfo = data.data.pastEventsInfo
           @CalendarService.addEvents @upcomingEventsInfo
-          @$log.debug "ev2: " + JSON.stringify(obj) for obj in @eventSources
+          # @$log.debug "ev2: " + JSON.stringify(obj) for obj in @eventSources
           # if data.data.status == 0
           #   @userprofile = data.data.user
           #   @$cookieStore.put('userdata', data.data.user)

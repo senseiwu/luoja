@@ -9,7 +9,7 @@ POST    /signin                     controllers.Users.signin
 
 GET     /dashboard                  controllers.Application.index
 
-#GET     /event/:eventName           controllers.Events.details(eventName:String)
+GET     /event/:eventName           controllers.Application.indexE(eventName:String)
 
 GET     /usersdata/:login           controllers.Users.dashboard(login:String)
 
