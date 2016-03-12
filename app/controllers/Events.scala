@@ -28,6 +28,10 @@ class Events @Inject()(val messagesApi: MessagesApi, eventDAO: EventDAO) extends
     Ok("NA")
   }
 
+  def details(eventName:String) = Action {
+    Ok("NA")
+  }
+
   def upcoming = Action {
 //    implicit request =>
 //      Ok(views.html.events.list(eventDAO.findAllUpcoming))

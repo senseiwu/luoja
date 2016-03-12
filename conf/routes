@@ -9,6 +9,8 @@ POST    /signin                     controllers.Users.signin
 
 GET     /dashboard                  controllers.Application.index
 
+#GET     /event/:eventName           controllers.Events.details(eventName:String)
+
 GET     /usersdata/:login           controllers.Users.dashboard(login:String)
 
 GET     /suggestions/:login           controllers.Users.suggestions(login:String)

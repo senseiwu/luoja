@@ -9,6 +9,10 @@ class UserCtrl
         @uiConfig = @CalendarService.uiConfig
         @eventSources = [@CalendarService.events1]
         this.dashboard()
+        @eventClicked = @CalendarService.eventClicked
+
+    test: () ->
+      @$log.debug "TEST " + @CalendarService.eventClicked.title
 
     dashboard: () ->
       @UserService.details(@userprofile.email).then(
@@ -17,6 +21,7 @@ class UserCtrl
           @upcomingEventsInfo = data.data.upcomingEventsInfo
           @pastEventsInfo = data.data.pastEventsInfo
           @CalendarService.addEvents @upcomingEventsInfo
+          @$log.debug "ev2: " + JSON.stringify(obj) for obj in @eventSources
           # if data.data.status == 0
           #   @userprofile = data.data.user
           #   @$cookieStore.put('userdata', data.data.user)

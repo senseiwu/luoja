@@ -24,6 +24,9 @@ angular.module('mpApp.routeConfig', ['ngRoute'])
             .when('/dashboard', {
                 templateUrl: '/assets/html/dashboard.html'
             })
+            .when('/event/:eventName', {
+                templateUrl: '/assets/html/event.html'
+            })
             .otherwise({redirectTo: '/'})])
     .config(['$locationProvider', ($locationProvider) ->
         $locationProvider.html5Mode({

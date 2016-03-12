@@ -66,34 +66,34 @@ object DB {
     "Scala reactive programming",
     "scalareact",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    date1.toString(fmt), 12, 19)
+    Some(date1.toString(fmt)), 12, 19)
 
   val e2 = EventInfo(
     "1112",
     "SZJUG - Java User Group Shenzhen",
     "szjugmar19",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    date2.toString(fmt), 33, 112)
+    Some(date2.toString(fmt)), 33, 112)
 
   val e3 = EventInfo(
     "1113",
     "Microservices in action",
     "microsvcs",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    date3.toString(fmt), 33, 2)
+    Some(date3.toString(fmt)), 33, 2)
 
   val e4 = EventInfo(
     "1114",
     "UX design",
     "uxdesign",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    date4.toString(fmt), 33, 2)
+    None, 33, 2)
 
   val up = User("1234", "q@w", "Tomek", "Kozlowski", "Scala developer", "London",
     List("Scala", "Java", "Play", "Akka"),
     List("startup", "UX", "design"))
 
-  val ud = (List("1111","1112"), List("1114"))
+  val ud = (List("1111","1114"), List("1112"))
 
   val suggColl = Map("q@w" -> List("1111", "1114"))
   val evColl = Map("1111" -> e1, "1112" -> e2, "1113" -> e3, "1114" -> e4)

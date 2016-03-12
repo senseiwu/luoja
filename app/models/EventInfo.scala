@@ -8,7 +8,7 @@ case class EventInfo(
                       name:String,
                       slug:String,
                       info:String,
-                      when:String,
+                      when:Option[String],
                       peopleCount:Int,
                       commentsCount:Int
                       )
