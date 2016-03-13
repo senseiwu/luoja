@@ -8,8 +8,10 @@ import play.api.mvc._
 class Application @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   def index = Action {
-    //Redirect(routes.Events.list())
-    //Ok(views.html.users.login())
+    Ok(views.html.index())
+  }
+
+  def indexE(e:String) = Action {
     Ok(views.html.index())
   }
 

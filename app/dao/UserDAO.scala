@@ -87,7 +87,7 @@ object DB {
     "UX design",
     "uxdesign",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at ultricies nisl, sed ornare nunc. Maecenas elit nisi, tincidunt ac dui eu, commodo interdum odio.",
-    None, 33, 2)
+    Some(date4.toString(fmt)), 33, 2)
 
   val up = User("1234", "q@w", "Tomek", "Kozlowski", "Scala developer", "London",
     List("Scala", "Java", "Play", "Akka"),
