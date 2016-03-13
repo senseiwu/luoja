@@ -4,6 +4,7 @@ class EventCtrl
     constructor: (@$log, @EventService) ->
         @$log.debug "constructing EventController"
         @events = []
+        @text = "Hello"
         @temp = []
         @getAllEvents()
 
@@ -21,4 +22,6 @@ class EventCtrl
               (error) => @$log.error "Unable to get Users: #{error}",
               @events = @temp)))
 
+    getText: () ->
+      "hello"
 controllersModule.controller('EventCtrl', ['$log', 'EventService', EventCtrl])
