@@ -8,6 +8,7 @@ GET     /                           controllers.Application.index
 POST    /signin                     controllers.Users.signin
 
 GET     /dashboard                  controllers.Application.index
+GET     /newevent                   controllers.Application.index
 
 GET     /event/:eventName           controllers.Application.indexE(eventName:String)
 

@@ -3,6 +3,7 @@ dependencies = [
     'ngCookies',
     'ui.calendar',
     'ui.bootstrap',
+    'ui.select'
     'mpApp.filters',
     'mpApp.directives',
     'mpApp.routeConfig'
@@ -26,6 +27,9 @@ angular.module('mpApp.routeConfig', ['ngRoute'])
             })
             .when('/event/:eventName', {
                 templateUrl: '/assets/html/event.html'
+            })
+            .when('/newevent', {
+                templateUrl: '/assets/html/createEvent.html'
             })
             .otherwise({redirectTo: '/'})])
     .config(['$locationProvider', ($locationProvider) ->
