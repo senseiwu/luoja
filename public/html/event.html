@@ -1,68 +1,155 @@
-<div class="row" ng-controller="EventCtrl as ec">
-  <div class="col-md-8">
-  <div class="panel panel-default"> 
-    </br>
-      <h6>This event is for people who are interested in ...</h6>
-      <span class="label label-primary-lg">1</span>
-      <span class="label label-primary">User Research</span>
-      <span class="label label-primary">Wireframe</span>
-      <span class="label label-primary">Prototype</span>
-      <span class="label label-primary">Service Design</span>
-      <span class="label us-select">Service Design</span>
-      
-      <h4>&nbsp;Productivity Playbook:</h4>
-      <h4>&nbsp;Lessons learned from Leaders & Entrepreneurs On Go</h4>
-      
-      &nbsp;<img src="/assets/images/calendar-icon-grey.png" height="52" width="52"> Friday, March 14, 2016, 9 pm</img>
-      &nbsp;<img src="/assets/images/calendar-icon-grey.png" height="52" width="52"> Friday, March 14, 2016, 10 pm</img>
-      </br>
-      </br>
-      &nbsp;<img src="/assets/images/map-marker-64.png" height="42" width="42"> 8th floor, 8th block, Vision tech park, Nanshan, Shenzhen</img>
-      </br>
-      <h5>&nbsp;Hi , everyone, hope you all had a great weekend. Here is a good news for this Friday. The Super Guess is back. Don't miss it this time.</h5>
-      <h5>&nbsp;Wilson is the perfect host for this game.</h5>
-      <h5>&nbsp;Here is the introduction of the game.</h5>
-      <h5> {{ec.getText}} </h5>
-      <h5> {{ ec.text }} </h5>
-
-  </div>
-    
-  </div>
-  <div class="col-md-4">
-    <div class="panel panel-default">
-      </br>
-    <p class="text-center"><b>28 people are going </b></p>
-
-      <table class="table table-striped">
-        <tr>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-        </tr>
-
-        <tr>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-        </tr>
-        <tr>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-        </tr>
-
-        <tr>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-          <td> <img src="/assets/images/GreyPeople.png" height="52" width="52"/> </td>
-        </tr>
-      </table>
-
+<div class="mp-padding" ng-controller="EventCtrl as ec">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="text-center"><strong>Productivity Playbook:</strong></h2>
+          <h3 class="text-center">Lessons learned from Leaders & Entrepreneurs On Go</h3>
+        </div>
+        <div class="panel-body">
+          <nav>
+            <ul class="nav nav-pills">
+              <li role="presentation" class="active"><a href="#">Home</a></li>
+              <li role="presentation"><a href="#">Speakers</a></li>
+              <li role="presentation"><a href="#">Agenda</a></li>
+              <li role="presentation"><a href="#">Discussions</a></li>
+              <li role="presentation"><a href="#">Sponsors and Partners</a></li>
+              <li role="presentation"><a href="#">Uploads</a></li>
+              <li class="pull-right active" role="presentation"><a href="#"><strong>REGISTER</strong></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- <nav>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">Discussions</a></li>
+          <li role="presentation"><a href="#">Photos</a></li>
+          <li class="pull-right active" role="presentation"><a href="#">REGISTER</a></li>
+        </ul>
+      </nav> -->
     </div>
-    
-  </div> 
+
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-12">
+            <h5>Hi, everyone, hope you all had a great weekend. Here is a good news for this Friday. The Super Guess is back. Don't miss it this time.</h5>
+            <h5>Wilson is the perfect host for this game.</h5>
+            <h5>Here is the introduction of the game.</h5>
+            <h5>Name of the game: Super Guess</h5>
+            <h5>How to play it</h5>
+            <h5>1) Split up different teams and self-introduction in teams</h5>
+            <h5>2) One person from each team will come forward and read a word.</h5>
+            <h5>3) Then he go back his team and act out the word without speaking.</h5>
+            <h5>4) If your team guesses the word put your hand up so shat we can see.</h5>
+            <h5>5) The first team to guess the word gets a point, and then someone else comes up to read a word.everyone has chance to act out a word.</h5>
+            <h5>6) The team which gets most points wins the game .</h5>
+            <h5>Time line:</h5>
+            <h5>1) 7:30PM-8:00PM: Greeting and ordering food or drinking</h5>
+            <h5>2) 8:00PM-9:00PM: Playing the game</h5>
+            <h5>Time: October 23th @7:30PM~10:00PM</h5>
+            <h5>3) 9:00PM-10:00PM: Free talking</h5>
+            <h5>Place: Laffa</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6 class="panel-title"><strong>Where</strong></h6>
+        </div>
+        <div class="panel-body">
+          <p><strong>Address</strong></p>
+          <p>8th floor, 8th block, Vision tech park, Nanshan, Shenzhen</p>
+          <p><strong>How to get there</strong></p>
+          <p>Leave the Shuiwan Metro station Exit D, cross the crossing ,go straight around 100 metres , you will see the Laffa.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6 class="panel-title"><strong>When</strong></h6>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr>
+              <td><strong>Start</strong></td>
+              <!-- <td><img src="/assets/images/calendar-icon-grey.png" height="30" width="30"></td> -->
+              <td><span class="label label-primary"> Friday, March 14, 2016, 9 pm</span></td>
+            </tr>
+            <tr>
+              <td><strong>End</strong></td>
+              <td><span class="label label-primary"> Friday, March 14, 2016, 10 pm</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6 class="panel-title"><strong>Tags</strong></h6>
+        </div>
+        <div class="panel-body">
+          <span class="label label-success">User Research</span>
+          <span class="label label-success">Wireframe</span>
+          <span class="label label-success">Prototype</span>
+          <span class="label label-success">Service Design</span>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6 class="panel-title"><strong>Contact</strong></h6>
+        </div>
+        <div class="panel-body">
+          <p>Mio</p>
+          <p><span class="glyphicon glyphicon-phone"></span> 13148807853</p>
+          <p><img src="/assets/images/wechat_icon.png"> yimioyo</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h6 class="panel-title"><strong>28 people are going</strong></h6>
+        </div>
+        <div class="panel-body">
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <img src="/assets/images/GreyPeople.png" height="52" width="52"/>
+          <nav>
+            <ul class="pagination pagination-sm">
+              <li>
+                <a href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li>
+                <a href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
