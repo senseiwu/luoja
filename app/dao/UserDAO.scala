@@ -2,8 +2,10 @@ package dao
 
 import javax.inject.{Inject, Singleton}
 
-import com.mongodb.casbah.Imports._
-import db.{DbConnection, Schema}
+import org.mongodb.scala._
+import org.mongodb.scala.model.Filters._
+
+import services.{DbConnection, Schema}
 import models.{AuthStatus, UserDashboard, EventInfo, User}
 import org.joda.time.format.{DateTimeFormatter, DateTimeFormatterBuilder, DateTimeFormat}
 import org.joda.time.{DateTime, LocalDate}
@@ -18,14 +20,22 @@ import scala.concurrent.ExecutionContext.Implicits.global
 @Singleton
 class UserDAO @Inject() (dbConnection: DbConnection) {
 
+  private val usersCollection = dbConnection.db.getCollection("users")
+
   def login(name:String, password:String):Future[AuthStatus] = Future {
-    //TODO: rework it to more scala way!
+
     val u = DB.usrColl(name)
     if (u._1.equals(password))
       AuthStatus(AuthStatus.AUTH_SUCCESS, Some(u._2))
     else
     AuthStatus(AuthStatus.AUTH_FAILURE, None)
   }
+
+  // TODO: 1- handle if not exist in db, handle all exceptional cases
+  def findByEmail(email:String):Future[User] =
+    usersCollection.find(equal("email", email)).head().map[User]((doc:Document) => {
+      documentToUser(doc)
+    })
 
   def events(name:String):Future[UserDashboard] = Future {
     val ids = DB.usrColl(name)._3
@@ -42,6 +52,22 @@ class UserDAO @Inject() (dbConnection: DbConnection) {
   def signin(name:String, password:String) = ???
 
   def updateProfile() = ???
+
+  def documentToUser(doc: Document): User = {
+    import scala.collection.JavaConverters._
+    User(
+      doc.get("_id").get.asObjectId().getValue.toString,
+      doc.get("email").get.asString().getValue,
+      doc.get("first_name").get.asString().getValue,
+      doc.get("second_name").get.asString().getValue,
+      doc.get("job_position").get.asString().getValue,
+      doc.get("location").get.asString().getValue,
+      doc.get("skills").get.asArray().getValues.asScala.toList.map(_.asString().getValue),
+      doc.get("interests").get.asArray().getValues.asScala.toList.map(_.asString().getValue),
+      doc.get("past_events").get.asArray().getValues.asScala.toList.map(_.asString().getValue),
+      doc.get("upcoming_events").get.asArray().getValues.asScala.toList.map(_.asString().getValue)
+    )
+  }
 
 }
 
@@ -112,7 +138,10 @@ object DB {
 
   val up = User("1234", "q@w", "John", "Doe", "Scala developer", "London",
     List("Scala", "Java", "Play", "Akka", "Android"),
-    List("startup", "UX", "design"))
+    List("startup", "UX", "design"),
+    List("1111","1112"),
+    List("1115", "1116")
+  )
 
   val ud = (List("1111","1112"), List("1115", "1116"))
 

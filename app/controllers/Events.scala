@@ -2,9 +2,8 @@ package controllers
 
 import javax.inject.Inject
 
-import com.mongodb.casbah.MongoClient
 import dao.EventDAO
-import db.{DbConnection, Mongo}
+import services.{DbConnection, Mongo}
 import org.joda.time.LocalDate
 import play.api.Play._
 import play.api.http.Writeable

@@ -35,6 +35,22 @@ class Users @Inject()(val messagesApi: MessagesApi, userDao:UserDAO, eventDao:Ev
       )
   }
 
+  def signin2 = Action.async(BodyParsers.parse.json) {
+    implicit request =>
+      request.body.validate[UserLogin].fold(
+        error => Future.successful(BadRequest("")),
+        user =>
+          userDao.findByEmail(user.name).map((u:User) => {
+            Ok(Json.toJson(AuthStatus(AuthStatus.AUTH_SUCCESS, Some(u))))
+          }).recoverWith{
+            case e: Exception => Future {
+              Logger.info("ERR: " + e)
+              Forbidden
+            }
+          }
+      )
+  }
+
   def dashboard(login:String) = Action.async {
     userDao.events(login).map((ud:UserDashboard) => {
       Ok(Json.toJson(ud))

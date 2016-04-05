@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= {
   Seq(
-    "org.mongodb" % "casbah-core_2.11" % "2.8.2"
+    "org.mongodb.scala" %% "mongo-scala-driver" % "1.0.1"
   )
 }
 

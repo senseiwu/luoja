@@ -1,7 +1,6 @@
 
-import com.mongodb.casbah.Imports._
-import db.Mongo
-import db.Schema
+import services.Mongo
+import services.Schema
 import models.Event
 import org.scalatest.BeforeAndAfter
 import org.scalatest.{BeforeAndAfter, FunSuite}
@@ -30,6 +29,12 @@ object A {
 class Bmw extends Car {
   def convert(s:String)(implicit cvt:(String) => (Int)):Int = cvt(s)
   def conv2(s:String):Int = Integer.valueOf(s)
+}
+
+class UserTest extends FunSuite with BeforeAndAfter {
+  val m = Map(1 -> "11", 2 -> "22", 3 -> "33")
+  val l:List[String] = m.map(_._2).asInstanceOf[List[String]]
+  l.foreach(println)
 }
 
 class EventTest extends FunSuite with BeforeAndAfter {
@@ -61,13 +66,13 @@ class EventTest extends FunSuite with BeforeAndAfter {
 //
 //  }
 
-  test("db test") {
-    val mongo = Mongo(MongoClient(), "dbtestmp")
-    val db = mongo.getdb
-    db.dropDatabase()
-    val users = mongo.collection("users")
-    val lectures = mongo.collection("lecture")
-    val events = mongo.collection("event")
+//  test("services test") {
+//    val mongo = Mongo(MongoClient(), "dbtestmp")
+//    val db = mongo.getdb
+//    db.dropDatabase()
+//    val users = mongo.collection("users")
+//    val lectures = mongo.collection("lecture")
+//    val events = mongo.collection("event")
 
     // USERS
 //    val userObj1 = Schema.userMongoObj("tomek1", "tomek1@go2.pl", "Tomasz", "Kozlowski", "#$Hjhkjh41", "CTO", "London", List())
@@ -76,26 +81,27 @@ class EventTest extends FunSuite with BeforeAndAfter {
 //    val userObj4 = Schema.userMongoObj("tomek4", "tomek4@go2.pl", "Tomasz", "Kozlowski", "#$Hjhkjh44", "CTO", "London", List())
 
 //    users.insert(userObj1)
-    val cursor = users.findOne("name" $eq "tomek11")
-    println("colls: " + db.collectionNames() + " .. cursor " + users.size + ", " + users.find + " .. " + cursor)
 
-    if(!cursor.isDefined) fail()
-
-    println("job_position: " + cursor.get.get("job_position"))
-    val id = cursor.get.get("_id").asInstanceOf[ObjectId]
-    println("UserID: " + id)
-
-    // LECTURES
-    val lectureObj = Schema.lectureMongoObj("JVM", "bla bla bla", id, 2, List("Java", "JVM"))
-    lectures.insert(lectureObj)
-    val lecture = lectures.find("speaker" $eq id)
-    println("User's lectures: " + lecture.size)
-    lecture.foreach(println)
+//    val cursor = users.findOne("name" $eq "tomek11")
+//    println("colls: " + db.collectionNames() + " .. cursor " + users.size + ", " + users.find + " .. " + cursor)
+//
+//    if(!cursor.isDefined) fail()
+//
+//    println("job_position: " + cursor.get.get("job_position"))
+//    val id = cursor.get.get("_id").asInstanceOf[ObjectId]
+//    println("UserID: " + id)
+//
+//    // LECTURES
+//    val lectureObj = Schema.lectureMongoObj("JVM", "bla bla bla", id, 2, List("Java", "JVM"))
+//    lectures.insert(lectureObj)
+//    val lecture = lectures.find("speaker" $eq id)
+//    println("User's lectures: " + lecture.size)
+//    lecture.foreach(println)
 
     // EVENTS
 //    val evObj = Schema.eventMongoObj("JUGSZ", "Java etc", id, null, List(), null, List(), null)
 //    events.insert(evObj)
 //    println("EvID: " + evObj._id + ", " + events.findOne("name" $eq "JUGSZ"))
-  }
+//  }
 
 }

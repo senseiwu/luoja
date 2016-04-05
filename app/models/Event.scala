@@ -2,7 +2,7 @@ package models
 
 import javax.inject.{Inject, Singleton}
 
-import db.{Schema, DbConnection}
+import services.{Schema, DbConnection}
 import org.joda.time.LocalDate
 import play.api.Logger
 

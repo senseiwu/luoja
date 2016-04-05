@@ -5,7 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index
 
-POST    /signin                     controllers.Users.signin
+POST    /signin                     controllers.Users.signin2
 
 GET     /dashboard                  controllers.Application.index
 GET     /newevent                   controllers.Application.index

@@ -2,7 +2,7 @@ package dao
 
 import javax.inject.{Inject, Singleton}
 
-import db.DbConnection
+import services.DbConnection
 import models.{Event, EventInfo}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future

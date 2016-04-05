@@ -1,5 +1,7 @@
 package models
 
+import org.bson.types.ObjectId
+
 /**
  * Created by tomek on 2/7/16.
  */
@@ -12,7 +14,9 @@ case class User(
                  jobPosition:String,
                  location:String,
                  skills:List[String],
-                 interests:List[String]
+                 interests:List[String],
+                 pastEvents:List[String],
+                 upcomingEvents:List[String]
                  )
 
 object User {
