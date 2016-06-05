@@ -12,8 +12,7 @@ import scala.concurrent.Future
  */
 @Singleton
 class EventDAO @Inject() (dbConnection: DbConnection) {
-  def eventInfoByIdSync(id:String):EventInfo = DB.evColl(id)
-  def eventInfoByIdAsync(id:String):Future[EventInfo] = Future(eventInfoByIdSync(id))
-  def eventByIdSync(id:String):Event = ???
-  def eventByIdAsync(id:String):Future[Event] = Future(eventByIdSync(id))
+//  def eventInfo(ids:List[String]):Future[List[EventInfo]] = Future {
+//
+//  }
 }

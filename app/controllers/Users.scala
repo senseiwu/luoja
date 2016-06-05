@@ -2,21 +2,20 @@ package controllers
 
 import javax.inject.Inject
 
+import b2b.B2BService
 import dao.{DB, EventDAO, UserDAO}
 import play.api.i18n.{I18nSupport, MessagesApi}
-import play.api.mvc.{BodyParsers, Action, Controller}
+import play.api.mvc.{Action, BodyParsers, Controller}
 import play.api.Logger
 import play.api.libs.json._
 
 import scala.concurrent.Future
-
-
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Created by tomek on 2/10/16.
  */
-class Users @Inject()(val messagesApi: MessagesApi, userDao:UserDAO, eventDao:EventDAO) extends Controller with I18nSupport {
+class Users @Inject()(val messagesApi: MessagesApi, userDao:UserDAO, eventDao:EventDAO, b2b:B2BService) extends Controller with I18nSupport {
 
   import models._
 

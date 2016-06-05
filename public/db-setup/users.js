@@ -28,3 +28,17 @@ db.users.insert({
   past_events:[]
   }
 );
+db.users.insert({
+	first_name:"Harry",
+	second_name:"Zhang",
+	password:"1111",
+	email:"harry@w",
+	job_position:"CEO",
+  location:"Shenzhen",
+  skills:["events", "IoT"],
+  interests:["Music, IT"],
+	suggested_events:[],
+  upcoming_events:[],
+  past_events:[]
+  }
+);
