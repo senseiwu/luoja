@@ -1,11 +1,12 @@
 package b2b.dao
 
 import java.sql.Timestamp
+
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-
 import b2b.model.Order
 import com.google.inject.Inject
+import play.api.Logger
 import play.db.NamedDatabase
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
@@ -17,12 +18,27 @@ class OrderDAO @Inject() (@NamedDatabase("b2b") val dbConfigProvider: DatabaseCo
   import driver.api._
   private val orders = TableQuery[OrdersTable]
 
+//  val q = for { c <- coffees if c.name === "Espresso" } yield c.price
+//  val updateAction = q.update(10.49)
+
   def insert(order:Order): Future[Unit] = db.run(orders += order).map{_=> ()}
-  def updatePx(px:Double) = ???
-  def update(order:Order) = ???
-  def updateType(itemType:Int) = ???
-  def updateTag(itemTag:String) = ???
-  def updateDealFlag(hasDeal:Boolean) = ???
+  def updatePx(id:Long, px:Double) = {
+    val q = for {
+      ord <- orders if ord.id === id
+    } yield ord.bidPx
+    db.run(q.update(px))
+  }
+  def update(order:Order) = {
+    val o = orderById(order.id)
+  }
+  def updateType(id:Long, itemType:Int) = ???
+  def updateTag(id:Long, itemTag:String) = ???
+  def updateDealFlag(id:Long, hasDeal:Boolean) = ???
+
+  def findByClientId(cid:Long):Future[Seq[Order]] = db.run(orders.filter(_.clientId === cid).result)
+  def findByTag(itag:String):Future[Seq[Order]] = db.run(orders.filter(_.itemTag === itag).result)
+
+  private def orderById(id:Long) = orders.filter(_.id === id).result
 
   private class OrdersTable(tag: Tag) extends Table[Order](tag, "ORDERS") {
     def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
