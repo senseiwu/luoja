@@ -18,27 +18,24 @@ class OrderDAO @Inject() (@NamedDatabase("b2b") val dbConfigProvider: DatabaseCo
   import driver.api._
   private val orders = TableQuery[OrdersTable]
 
-//  val q = for { c <- coffees if c.name === "Espresso" } yield c.price
-//  val updateAction = q.update(10.49)
+  def insert(order:Order): Future[Long] = db.run((orders returning orders.map(_.id)) += order)
 
-  def insert(order:Order): Future[Unit] = db.run(orders += order).map{_=> ()}
   def updatePx(id:Long, px:Double) = {
     val q = for {
       ord <- orders if ord.id === id
     } yield ord.bidPx
     db.run(q.update(px))
   }
-  def update(order:Order) = {
-    val o = orderById(order.id)
-  }
-  def updateType(id:Long, itemType:Int) = ???
-  def updateTag(id:Long, itemTag:String) = ???
-  def updateDealFlag(id:Long, hasDeal:Boolean) = ???
+  def update(order:Order) = db.run(orderById(order.id).update(order))
+  def updateType(id:Long, itemType:Int) = db.run(orderById(id).map(_.itemType).update(itemType))
+  def updateTag(id:Long, itemTag:String) = db.run(orderById(id).map(_.itemTag).update(itemTag))
+  def updateDealFlag(id:Long, hasDeal:Boolean) = db.run(orderById(id).map(_.hasDeal).update(hasDeal))
 
+  def findById(id:Long):Future[Option[Order]] = db.run(orderById(id).result.headOption)
   def findByClientId(cid:Long):Future[Seq[Order]] = db.run(orders.filter(_.clientId === cid).result)
   def findByTag(itag:String):Future[Seq[Order]] = db.run(orders.filter(_.itemTag === itag).result)
 
-  private def orderById(id:Long) = orders.filter(_.id === id).result
+  private def orderById(id:Long) = orders.filter(_.id === id)
 
   private class OrdersTable(tag: Tag) extends Table[Order](tag, "ORDERS") {
     def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
