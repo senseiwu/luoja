@@ -25,7 +25,7 @@ class OrderDAOTest extends Specification {
   val application = new GuiceApplicationBuilder()
     .configure("slick.dbs.b2b.driver"-> "slick.driver.H2Driver$")
     .configure("slick.dbs.b2b.db.driver" -> "org.h2.Driver")
-    .configure("slick.dbs.b2b.db.url" -> "jdbc:h2:mem:test")
+    .configure("slick.dbs.b2b.db.url" -> "jdbc:h2:mem:b2b")
     .configure("slick.dbs.b2b.db.user" -> "sa")
     .configure("slick.dbs.b2b.db.password" -> "sa")
     .in(Mode.Test)

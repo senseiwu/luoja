@@ -20,16 +20,20 @@ class ItemDAO @Inject() (@NamedDatabase("b2b") val dbConfigProvider: DatabaseCon
 
   def insert(item:Item):Future[Long] = db.run((items returning items.map(_.id)) += item)
 
-  def list(px:Option[Int] = None, itag:String = "%", itype:Option[Int] = None):Future[Seq[Item]] = {
+  def list(px:Option[Double] = None, itag:String = "%", itype:Option[Int] = None):Future[Seq[Item]] = {
     val query = items.filter { item =>
       List(
+        px.map(item.askPx <= _),
         Option(itag).map(item.itemTag like _),
-        itype.map(item.itemType === _)
+        itype.map(item.itemType === _),
+        Option(true).map(item.isActive === _)
       ).collect({case Some(criteria) => criteria}).reduceLeftOption(_ && _).getOrElse(true: Rep[Boolean])
     }
     println(query.result.statements.head)
     db.run(query.result)
   }
+
+  def findForSourceId(id:Long):Future[Seq[Item]] = db.run(items.filter(_.sourceId === id).result)
 
   private class ItemsTable(tag: Tag) extends Table[Item](tag, "ITEMS") {
     def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)

@@ -1,6 +1,7 @@
 package b2b.dao
 
 import java.sql.Timestamp
+import scala.concurrent.Future
 
 import b2b.model.{Deal, DealDone, DealRej}
 import com.google.inject.Inject
@@ -15,6 +16,8 @@ import slick.driver.JdbcProfile
 class DealDAO @Inject() (@NamedDatabase("b2b") val dbConfigProvider: DatabaseConfigProvider) extends HasDatabaseConfigProvider[JdbcProfile] {
   import driver.api._
   private val deals = TableQuery[DealsTable]
+
+  def insert(deal:Deal):Future[Long] = db.run((deals returning deals.map(_.id)) += deal)
 
   private class DealsTable(tag:Tag) extends Table[Deal](tag, "DEALS") {
     def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
