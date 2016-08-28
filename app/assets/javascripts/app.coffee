@@ -22,6 +22,9 @@ angular.module('mpApp.routeConfig', ['ngRoute'])
             .when('/signup', {
                 templateUrl: '/assets/html/signup.html'
             })
+            .when('/register', {
+                templateUrl: '/assets/html/createUser.html'
+            })
             .when('/dashboard', {
                 templateUrl: '/assets/html/dashboard.html'
             })
