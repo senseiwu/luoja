@@ -3,7 +3,8 @@ dependencies = [
     'ngCookies',
     'ui.calendar',
     'ui.bootstrap',
-    'ui.select'
+    'ui.select',
+    'ngSanitize'
     'mpApp.filters',
     'mpApp.directives',
     'mpApp.routeConfig'

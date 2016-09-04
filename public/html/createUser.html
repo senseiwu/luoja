@@ -1,45 +1,63 @@
-<div class="mp-padding" ng-controller="CreateEventCtrl as cec">
+<div class="container" ng-controller="CreateUserCtrl as cuc">
+  <div class="form-register">
+    <div class="page-header">
+      <div>
+        <h4>Register Right Away!</h4>
+        <h5>We’ll help you find the right events to join, and recommend you groups to have a great hangout.</h5>
+      </div>
+      <div class="bottom"></div>
+    </div>
 
-  <h4>Register Right Away!</h4>
+    <div class="row">
+      <div>
+          <form ng-submit="cuc.createUser()">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name" required ng-model="cuc.user.name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Surname" required ng-model="cuc.user.surname">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Email" required ng-model="cuc.user.email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required ng-model="cuc.user.password">
+              </div>
+              <!-- <div class="form-group">
+                <input type="password" class="form-control" placeholder="Re-type password" required ng-model="cuc.user.repassword">
+              </div> -->
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <img src="/assets/images/GreyPeople.png" class="img-rounded img-responsive" />
+                <label for="exampleInputFile">Set your profile picture</label>
+                <input type="file" id="exampleInputFile">
+                <p class="help-block">Please choose picture with size 140 x 140</p>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.skills" theme="bootstrap" ng-disabled="disabled" title="Your skills">
+                <ui-select-match placeholder="What are your skills?">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="skill in cuc.skills | filter:$select.search">
+                  {{skill}}
+                </ui-select-choices>
+              </ui-select>
 
-  <h5>We’ll help you find the right events to join, and recommend you groups to have a great hangout.</h5>
+              <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.interests" theme="bootstrap" ng-disabled="disabled" title="Your interests">
+                <ui-select-match placeholder="What are your interests?">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="tag in cuc.interests | filter:$select.search">
+                  {{tag}}
+                </ui-select-choices>
+              </ui-select>
 
-  <img src="..." alt="..." class="img-circle center-block">
-
-  <div class="panel panel-default">
-    <!-- <div class="panel-heading">Please select an event type</div> -->
-    <div class="panel-body">
-      <form>
-        <div class="form-group col-xs-6">
-          <!-- <label for="userFirstName">First name</label> -->
-          <input type="text" class="form-control" id="userFirstName" placeholder="First name">
-        </div>
-        <div class="form-group col-xs-6">
-          <!-- <label for="userFirstName">First name</label> -->
-          <input type="text" class="form-control" id="userSurname" placeholder="Second name">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputFile">File input</label>
-          <input type="file" id="exampleInputFile">
-          <p class="help-block">Example block-level help text here.</p>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Check me out
-          </label>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+              <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Information about you"></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">Register</button>
+            </div>
+          </form>
+      </div>
     </div>
   </div>
-
 </div>
