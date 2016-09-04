@@ -1,6 +1,8 @@
 $ ->
   $("#sres").hide
-  console.log("Document is ready...")
+  console.log("Document is ready..." + vomit)
+  $("#sin").click ->
+    console.log("sin clicked")
 
 
-vomit = () -> log "is vomitting blaaa ~~~"
+vomit = () -> console.log "is vomitting blaaa ~~~"

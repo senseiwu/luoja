@@ -30,9 +30,10 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <img src="/assets/images/GreyPeople.png" class="img-rounded img-responsive" />
+                <!-- <img src="/assets/images/GreyPeople.png" class="img-rounded img-responsive" /> -->
+                <img id="blah" src="/assets/images/GreyPeople.png" style="max-width:240px; height:auto;" alt="your image"/>
                 <label for="exampleInputFile">Set your profile picture</label>
-                <input type="file" id="exampleInputFile">
+                <input type="file" id="exampleInputFile" onchange="vomit(this)">
                 <p class="help-block">Please choose picture with size 140 x 140</p>
               </div>
             </div>
