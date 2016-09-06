@@ -1,4 +1,4 @@
-<div class="container" ng-controller="B2BUserCtrl as cuc">
+<div class="container" ng-controller="B2BUserCtrl as b2b">
   <div class="form-register">
     <div class="page-header">
       <div>
@@ -12,39 +12,21 @@
       <div>
           <form ng-submit="cuc.createUser()">
             <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name" required ng-model="cuc.user.name">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Surname" required ng-model="cuc.user.surname">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Email" required ng-model="cuc.user.email">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required ng-model="cuc.user.password">
-              </div>
-              <!-- <div class="form-group">
-                <input type="password" class="form-control" placeholder="Re-type password" required ng-model="cuc.user.repassword">
-              </div> -->
+                <input type="text" class="form-group form-control" placeholder="Company name" required ng-model="b2b.user.name">
+                <input type="text" class="form-group form-control" placeholder="Web page" required ng-model="b2b.user.surname">
+                <input type="text" class="form-group form-control" placeholder="Email" required ng-model="b2b.user.email">
+                <input type="password" class="form-group form-control" placeholder="Password" required ng-model="b2b.user.password">
+                <input type="text" class="form-group form-control" placeholder="Phone" required ng-model="b2b.user.phone">
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <!-- <img src="/assets/images/GreyPeople.png" class="img-rounded img-responsive" /> -->
                 <img id="blah" src="/assets/images/GreyPeople.png" style="max-width:240px; height:auto;" alt="your image"/>
-                <label for="exampleInputFile">Set your profile picture</label>
+                <label for="exampleInputFile">Set your logo</label>
                 <input type="file" id="exampleInputFile" onchange="vomit(this)">
                 <p class="help-block">Please choose picture with size 140 x 140</p>
               </div>
             </div>
             <div class="col-md-12">
-              <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.skills" theme="bootstrap" ng-disabled="disabled" title="Your skills">
-                <ui-select-match placeholder="What are your skills?">{{$item}}</ui-select-match>
-                <ui-select-choices repeat="skill in cuc.skills | filter:$select.search">
-                  {{skill}}
-                </ui-select-choices>
-              </ui-select>
-
               <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.interests" theme="bootstrap" ng-disabled="disabled" title="Your interests">
                 <ui-select-match placeholder="What are your interests?">{{$item}}</ui-select-match>
                 <ui-select-choices repeat="tag in cuc.interests | filter:$select.search">
@@ -53,7 +35,7 @@
               </ui-select>
 
               <div class="form-group">
-                <textarea class="form-control" rows="3" placeholder="Information about you"></textarea>
+                <textarea class="form-control" rows="3" placeholder="Information about you company"></textarea>
               </div>
               <button type="submit" class="btn btn-success">Register</button>
             </div>
