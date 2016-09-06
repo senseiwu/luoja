@@ -1,7 +1,7 @@
 
 class SigninUserCtrl
 
-    constructor: (@$cookieStore, @$log, @$location,  @UserService) ->
+    constructor: (@$cookieStore, @$log, @$location, @$http,  @UserService) ->
         @$log.debug "SigninUserCtrl created"
         @userprofile = @$cookieStore.get('userdata')
         if !this.isUndefined(@userprofile)
@@ -17,6 +17,7 @@ class SigninUserCtrl
             @userprofile = data.data.user
             @$cookieStore.put('userdata', data.data.user)
             @$location.path("/dashboard")
+            @UserService.auth(data.data.user)
           else
             @$log.debug "Login failed " + data.data.status
             @$location.path("/")
@@ -39,4 +40,4 @@ class SigninUserCtrl
     isUndefined: (value) ->
       angular.isUndefined(value) || value == null
 
-controllersModule.controller('SigninUserCtrl', ['$cookieStore', '$log', '$location', 'UserService', SigninUserCtrl])
+controllersModule.controller('SigninUserCtrl', ['$cookieStore', '$log', '$location', '$http', 'UserService', SigninUserCtrl])

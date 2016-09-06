@@ -8,6 +8,7 @@ import play.api.mvc._
 class Application @Inject()(val messagesApi: MessagesApi) extends Controller with I18nSupport {
 
   def index = Action {
+    println("index loaded")
     Ok(views.html.index())
   }
 

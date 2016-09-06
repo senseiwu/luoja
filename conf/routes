@@ -10,6 +10,7 @@ POST    /signin                     controllers.Users.signin2
 GET     /dashboard                  controllers.Application.index
 GET     /newevent                   controllers.Application.index
 GET     /register                   controllers.Application.index
+GET     /b2bwellcome                controllers.Application.index
 
 GET     /event/:eventName           controllers.Application.indexE(eventName:String)
 

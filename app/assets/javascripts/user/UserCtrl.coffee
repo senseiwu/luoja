@@ -74,7 +74,7 @@ class UserCtrl
           @upcomingEventsInfo = data.data.upcomingEventsInfo
           @pastEventsInfo = data.data.pastEventsInfo
           this.addEvents @upcomingEventsInfo
-          # @$log.debug "ev2: " + JSON.stringify(obj) for obj in @eventSources
+          @$log.debug "ev2: " + JSON.stringify(obj) for obj in @eventSources
       )
       @UserService.suggestions(@userprofile.email).then (
         (data) =>

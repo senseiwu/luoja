@@ -3,10 +3,10 @@ class UserService
 
   @headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
   @defaultConfig = { headers: @headers }
-  # @user = {}
 
-  constructor: (@$log, @$http, @$q) ->
+  constructor: (@$log, @$http, @$q, @$cookieStore) ->
     @$log.debug "constructing UserService"
+    @user = @$cookieStore.get('userdata')
 
   details: (username) ->
     deffer = @$q.defer()
@@ -32,6 +32,8 @@ class UserService
       .success((data,status,headers) => deffer.resolve(data))
       .error((datamstatus,headers) => deffer.reject(data))
 
+  auth: (value) ->
+    @user = value
 
   httpCall: (url) ->
     deffer = @$q.defer()
@@ -41,4 +43,4 @@ class UserService
       .error((data, status, headers) => deffer.reject(data))
     deffer.promise
 
-servicesModule.service('UserService', ['$log', '$http', '$q', UserService])
+servicesModule.service('UserService', ['$log', '$http', '$q', '$cookieStore', UserService])

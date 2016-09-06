@@ -15,7 +15,7 @@
 
 </head>
 
-<body ng-class="{'body-look':true}" ng-controller="AuthCtrl as cc">
+<body ng-class="{'body-look':true}" ng-controller="CookiesCtrl as cc">
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -29,7 +29,7 @@
             <a class="navbar-brand" href="@routes.Application.index()">@Messages("application.name")</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-            <div ng-if="cc.isActive()">
+            <!-- <div ng-show="cc.userdata"> -->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/#/newevent">@Messages("events.new.command")</a></li>
                     <li><a href="/#/" ng-click="cc.logoff()">Log off</a></li>
@@ -37,7 +37,7 @@
                 <div class="navbar-form navbar-right">
                     <a class="btn btn-default btn-sm" ng-href="/#/b2bwellcome">Business account</a>
                 </div>
-            </div>
+            <!-- </div> -->
         </div><!--/.nav-collapse -->
     </div>
 </nav>
@@ -73,7 +73,7 @@
 <script src="@routes.Assets.versioned("javascripts/app.js")" type="text/javascript"></script>
 <script src="@routes.Assets.versioned("javascripts/EventService.js")" type="text/javascript"></script>
 <script src="@routes.Assets.versioned("javascripts/CalendarService.js")" type="text/javascript"></script>
-<script src="@routes.Assets.versioned("javascripts/AuthCtrl.js")" type="text/javascript"></script>
+<script src="@routes.Assets.versioned("javascripts/CookiesCtrl.js")" type="text/javascript"></script>
 <script src="@routes.Assets.versioned("javascripts/EventCtrl.js")" type="text/javascript"></script>
 <script src="@routes.Assets.versioned("javascripts/user/UserCtrl.js")" type="text/javascript"></script>
 <script src="@routes.Assets.versioned("javascripts/Service.js")" type="text/javascript"></script>

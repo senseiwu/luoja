@@ -35,6 +35,12 @@ angular.module('mpApp.routeConfig', ['ngRoute'])
             .when('/newevent', {
                 templateUrl: '/assets/html/createEvent.html'
             })
+            .when('/b2bwellcome', {
+                templateUrl: '/assets/html/businessWellcome.html'
+            })
+            .when('/b2bcreate', {
+                templateUrl: '/assets/html/createBusinessUser.html'
+            })
             .otherwise({redirectTo: '/'})])
     .config(['$locationProvider', ($locationProvider) ->
         $locationProvider.html5Mode({
