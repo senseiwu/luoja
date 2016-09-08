@@ -20,9 +20,9 @@
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <img id="blah" src="/assets/images/GreyPeople.png" style="max-width:240px; height:auto;" alt="your image"/>
-                <label for="exampleInputFile">Set your logo</label>
-                <input type="file" id="exampleInputFile" onchange="vomit(this)">
+                <img id="logo" src="/assets/images/GreyPeople.png" style="max-width:240px; max-height:240px;" alt="your image"/>
+                <label for="logoFile">Set your logo</label>
+                <input type="file" id="logoFile" onchange="updatePicture(this, 'logo')">
                 <p class="help-block">Please choose picture with size 140 x 140</p>
               </div>
             </div>
@@ -37,8 +37,47 @@
               <div class="form-group">
                 <textarea class="form-control" rows="3" placeholder="Information about you company"></textarea>
               </div>
-              <button type="submit" class="btn btn-success">Register</button>
+              <!-- <button type="submit" class="btn btn-success">Register</button> -->
             </div>
+
+            <!-- gallery -->
+            <div class="page-header col-md-12">
+              <h4>Attach pictures which might be interested for your customers.</h4>
+              <div class="bottom"></div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <img id="gallery1" src="/assets/images/picsfolder.png" style="max-width:100px; max-height:100px;" onclick="triggerInputAction('file1')"/>
+                <input id="file1" type="file" style='visibility: hidden;' onchange="updatePicture(this,'gallery1')">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <img id="gallery2" src="/assets/images/picsfolder.png" style="max-width:100px; max-height:100px;" onclick="triggerInputAction('file2')"/>
+                <input id="file2" type="file" style='visibility: hidden;' onchange="updatePicture(this, 'gallery2')">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <img id="gallery3" src="/assets/images/picsfolder.png" style="max-width:100px; max-height:100px;" onclick="triggerInputAction('file3')"/>
+                <input id="file3" id="file4" type="file" style='visibility: hidden;' onchange="updatePicture(this, 'gallery3')">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <img id="gallery4" src="/assets/images/picsfolder.png" style="max-width:100px; max-height:100px;" onclick="triggerInputAction('file4')"/>
+                <input id="file4" type="file" style='visibility: hidden;' onchange="updatePicture(this, 'gallery4')">
+              </div>
+            </div>
+
+            <!-- Are you venue? -->
+            <div class="page-header col-md-12">
+              <div class="checkbox">
+                <h4>Do you offer venue?</h4><input type="checkbox" value="remember-me"/>
+              </div>
+              <div class="bottom"></div>
+            </div>
+
           </form>
       </div>
     </div>
