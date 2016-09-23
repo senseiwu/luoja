@@ -73,13 +73,54 @@
             <!-- Are you venue? -->
             <div class="page-header col-md-12">
               <div class="checkbox">
-                <h4>Do you offer venue?</h4><input type="checkbox" value="remember-me"/>
+                  <label>
+                    <input type="checkbox" value="remember-me"> Do you offer venue?
+                  </label>
               </div>
               <div class="bottom"></div>
             </div>
 
+            <!-- <div class="col-md-6">
+              <label>Address Line 1</label>
+              <label>Address Line 2</label>
+              <label>City</label>
+              <label>State/Province/Region</label>
+              <label>ZIP/Post code</label>
+              <label>Country</label>
+            </div> -->
+
+            <div  >
+              <div class="form-group">
+                <label>Address Line 1</label>
+                <input type="text" class="form-control" placeholder="Street address, P.O. box, Company name" required ng-model="b2b.address.line1">
+              </div>
+              <input type="text" class="form-group form-control" placeholder="Appartment, suite, unit, building, floor etc." required ng-model="b2b.address.line2">
+              <input type="text" class="form-group form-control" placeholder="City" required ng-model="b2b.address.city">
+              <input type="text" class="form-group form-control" placeholder="State/province/region" required ng-model="b2b.address.state">
+              <input type="text" class="form-group form-control" placeholder="ZIP/Post code" required ng-model="b2b.address.phone">
+              <input type="text" class="form-group form-control" placeholder="Country" required ng-model="b2b.address.country">
+            </div>
+            <!-- <div class="col-md-12">
+              <label>Address Line 1</label><input type="text" class="form-group form-control" placeholder="Street address, P.O. bix, Company name" required ng-model="b2b.address.line1">
+              <label>Address Line 2</label><input type="text" class="form-group form-control" placeholder="Appartment, suite, unit, building, floor etc." required ng-model="b2b.address.line2">
+              <label>City</label><input type="text" class="form-group form-control" required ng-model="b2b.address.city">
+              <label>State/Province/Region</label><input type="text" class="form-group form-control" required ng-model="b2b.address.state">
+              <label>ZIP/Post code</label><input type="text" class="form-group form-control" required ng-model="b2b.address.phone">
+              <label>Country</label><input type="text" class="form-group form-control" required ng-model="b2b.address.country">
+            </div> -->
           </form>
       </div>
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/300x300?bg=2a2025&text=logo" alt="Generic placeholder image">
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

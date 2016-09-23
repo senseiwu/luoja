@@ -33,7 +33,7 @@ angular.module('mpApp.routeConfig', ['ngRoute'])
                 templateUrl: '/assets/html/event.html'
             })
             .when('/newevent', {
-                templateUrl: '/assets/html/createEvent.html'
+                templateUrl: '/assets/html/venueProfile.html'
             })
             .when('/b2bwellcome', {
                 templateUrl: '/assets/html/businessWellcome.html'
