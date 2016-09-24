@@ -1,0 +1,65 @@
+@import "lib/bootstrap";
+@import "calendar";
+@import "signin";
+@import "icons";
+
+$primary-color: #eee;
+$background-color-not-active: #ddd;
+
+body {
+  padding-top: 50px;
+  background-color: $primary-color;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+.body-look {
+  background-color: $primary-color;
+}
+
+.body-not-active {
+  background-color: $background-color-not-active;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.mp-padding {
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+.form-register {
+  max-width: 730px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+.box-content {
+    display: inline-block;
+    width: 200px;
+    padding: 10px;
+}
+
+.bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.full { height: 100%;}
+
+
+/* user prifile */
+.user-profile {
+  max-width: 1000px;
+  padding: 15px;
+  margin: 0 auto;
+}

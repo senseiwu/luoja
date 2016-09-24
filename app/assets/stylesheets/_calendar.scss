@@ -1,0 +1,16 @@
+
+$weekend-color: #EBF4FA;
+$calendar-font: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+
+#calendar {
+		padding: 10px 10px;
+    width: 0 auto;
+    height: auto;
+    overflow: hidden;
+    font-family: $calendar-font;
+		font-size: 10px;
+}
+
+.fc-sat, .fc-sun {
+    background-color: $weekend-color;
+}
