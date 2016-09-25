@@ -7,7 +7,8 @@ dependencies = [
     'ngSanitize'
     'mpApp.filters',
     'mpApp.directives',
-    'mpApp.routeConfig'
+    'mpApp.routeConfig',
+    # 'mpApp.selectConfig',
     'mpApp.services',
     'mpApp.controllers',
 ]
@@ -47,6 +48,13 @@ angular.module('mpApp.routeConfig', ['ngRoute'])
             enabled: true,
             requireBase: false
         })])
+
+# angular.module('mpApp.selectConfig', ['ui.select', 'ngSanitize'])
+#   .constant(['uiSelectConfig', (uiSelectConfig) ->
+#     # uiSelectConfig.theme = 'bootstrap'
+#     uiSelectConfig.tagging-tokens = 'ENTER|TAB|,|SPACE'
+#   ])
+
 
 @controllersModule = angular.module('mpApp.controllers', [])
 @servicesModule = angular.module('mpApp.services', [])

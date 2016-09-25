@@ -1,7 +1,7 @@
 class CreateUserCtrl
   constructor: (@$log, @$location,  @UserService) ->
     @$log.debug "User ctrl created"
-    @interests = []
+    @interests = ["UX","meetups"]
     @skills = []
     @picSource = "/assets/images/GreyPeople.png"
 

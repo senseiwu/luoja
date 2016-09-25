@@ -38,14 +38,14 @@
               </div>
             </div>
             <div class="col-md-12">
-              <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.skills" theme="bootstrap" ng-disabled="disabled" title="Your skills">
+              <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.skills" tagging-tokens="ENTER|TAB|,|SPACE" ng-disabled="disabled" title="Your skills">
                 <ui-select-match placeholder="What are your skills?">{{$item}}</ui-select-match>
                 <ui-select-choices repeat="skill in cuc.skills | filter:$select.search">
                   {{skill}}
                 </ui-select-choices>
               </ui-select>
 
-              <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.interests" theme="bootstrap" ng-disabled="disabled" title="Your interests">
+              <ui-select class="form-group" multiple tagging tagging-label="false" ng-model="cuc.interests" tagging-tokens="ENTER|TAB|,|SPACE" ng-disabled="disabled" title="Your interests">
                 <ui-select-match placeholder="What are your interests?">{{$item}}</ui-select-match>
                 <ui-select-choices repeat="tag in cuc.interests | filter:$select.search">
                   {{tag}}
@@ -55,6 +55,11 @@
               <div class="form-group">
                 <textarea class="form-control" rows="3" placeholder="Information about you"></textarea>
               </div>
+
+              <div class="form-group">
+                <input class="form-control" type="text" placeholder="Enter email to invite friends to join">
+              </div>
+
               <button type="submit" class="btn btn-success">Register</button>
             </div>
           </form>
